@@ -5,8 +5,10 @@
 
 class VM
 {
-public:
+public: 
     VM();
+    
+    bool writeMemory(std::size_t address, unsigned char value);
 
     bool create(unsigned int memoryMB);
 
