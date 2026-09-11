@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Memory.h"
+#include "CPU.h"
 
 class VM
 {
@@ -12,11 +13,17 @@ public:
     void start();
     void stop();
 
+    void run(unsigned int instructions);
+
     bool isRunning() const;
 
     unsigned int getMemoryMB() const;
 
+    CPU& getCPU();
+
 private:
     Memory memory;
+    CPU cpu;
+
     bool running;
 };
