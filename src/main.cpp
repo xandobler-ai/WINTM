@@ -21,37 +21,37 @@ int main()
               << vm.getMemoryMB()
               << " MB\n\n";
 
-    /*
-        Our tiny CPU instruction set:
+    // Tiny guest program:
+    //
+    // 0x02 = INC R0
+    // 0x02 = INC R0
+    // 0x02 = INC R0
+    // 0x01 = HALT
 
-        0x00 = NOP
-        0x01 = HALT
-        0x02 = INC R0
-        0x03 = DEC R0
-
-        Program:
-
-        INC R0
-        INC R0
-        INC R0
-        HALT
-    */
-
-    // We need access to RAM for our test program.
-    // For now, we'll add a temporary way through Memory.
-    // This will be improved when we implement the memory bus.
+    vm.writeMemory(0, 0x02);
+    vm.writeMemory(1, 0x02);
+    vm.writeMemory(2, 0x02);
+    vm.writeMemory(3, 0x01);
 
     vm.start();
 
-    std::cout << "VM started.\n";
+    std::cout << "Running guest program...\n";
 
-    std::cout << "CPU R0: "
+    vm.run(100);
+
+    std::cout << "Guest program stopped.\n\n";
+
+    std::cout << "R0 = "
               << vm.getCPU().getRegister(0)
               << "\n";
 
+    std::cout << "Program Counter = "
+              << vm.getCPU().getProgramCounter()
+              << "\n";
+
+    std::cout << "\nVM shutting down...\n";
+
     vm.stop();
 
-    std::cout << "VM stopped.\n";
-
     return 0;
-}
+}v
