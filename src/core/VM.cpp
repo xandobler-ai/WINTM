@@ -8,6 +8,11 @@ VM::VM()
 
 bool VM::create(unsigned int memoryMB)
 {
+
+    bool VM::writeMemory(std::size_t address, unsigned char value)
+{
+    return memory.write(address, value);
+}
     if (memoryMB == 0)
         return false;
 
