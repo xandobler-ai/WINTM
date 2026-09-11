@@ -4,7 +4,23 @@ Memory::Memory()
 {
 }
 
-bool Memory::allocate(std::size_t megabytes)
+bool Memory::write(std::size_t address, unsigned char value)
+{
+    if (address >= memory.size())
+        return false;
+
+    memory[address] = value;
+
+    return true;
+}
+
+unsigned char Memory::read(std::size_t address) const
+{
+    if (address >= memory.size())
+        return 0;
+
+    return memory[address];
+}bool Memory::allocate(std::size_t megabytes)
 {
     try
     {
