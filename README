@@ -1,0 +1,44 @@
+# WinVM
+
+WinVM is an experimental virtual machine manager for Windows.
+
+The goal is to create a UTM-like application for Windows 7 and newer.
+
+## Features
+
+Currently:
+
+- VM configuration
+- Virtual RAM allocation
+- VM start/stop state
+- C++17 codebase
+- CMake build system
+
+## Planned
+
+- Virtual CPU
+- CPU emulation
+- Hardware virtualization
+- Virtual disks
+- ISO booting
+- BIOS/UEFI
+- Virtual networking
+- Virtual display
+- USB devices
+- Snapshots
+- GUI
+- Windows installer
+
+## Building
+
+Requirements:
+
+- CMake
+- C++17 compiler
+- Visual Studio or MinGW
+
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build .
